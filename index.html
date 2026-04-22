@@ -36,53 +36,41 @@
             line-height: 1.6;
         }
 
+        /* Base card */
         .project-card {
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 24px;
+            border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            margin-top: 20px;
+            margin-top: 24px;
+            border-left: 6px solid #444;
+            position: relative;
+            overflow: hidden;
         }
 
         .project-card h3 {
-            color: #ffffff;
+            margin-top: 0;
+            font-size: 1.5em;
+            letter-spacing: 0.5px;
         }
 
-        .project-card a {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #4da3ff;
-            font-weight: bold;
-        }
-
-        .project-card a:hover {
-            text-decoration: underline;
-        }
-
-        .external-link {
+        .project-card a.external-link {
             display: inline-block;
             margin-top: 12px;
             padding: 8px 14px;
-            background: #2a2a2a;
-            border: 1px solid #444;
             border-radius: 6px;
-            color: #4da3ff;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.2s, border-color 0.2s;
+            transition: transform 0.15s, background 0.2s, border-color 0.2s;
         }
 
-        .external-link:hover {
-            background: #333;
-            border-color: #4da3ff;
+        .project-card a.external-link:hover {
+            transform: translateY(-1px);
             text-decoration: none;
         }
 
         .embed-placeholder {
             margin-top: 15px;
             padding: 20px;
-            background: #2a2a2a;
             border: 1px dashed #555;
             border-radius: 6px;
             color: #888;
@@ -96,6 +84,85 @@
             margin-top: 15px;
             border-radius: 6px;
         }
+
+        /* ---------- Deep Divide: deep ocean theme ---------- */
+        .card-deepdivide {
+            background: linear-gradient(135deg, #0a2540 0%, #0f3d5c 60%, #0a2540 100%);
+            border-left-color: #4fc3f7;
+            box-shadow: 0 4px 20px rgba(79, 195, 247, 0.15);
+            font-family: "Georgia", serif;
+        }
+        .card-deepdivide h3 {
+            color: #b3e5fc;
+            text-shadow: 0 0 8px rgba(79, 195, 247, 0.35);
+        }
+        .card-deepdivide p {
+            color: #d4e8f2;
+        }
+        .card-deepdivide .external-link {
+            background: #0d3b5a;
+            border: 1px solid #4fc3f7;
+            color: #81d4fa;
+        }
+        .card-deepdivide .external-link:hover {
+            background: #124e76;
+            color: #ffffff;
+        }
+        .card-deepdivide .embed-placeholder {
+            border-color: #4fc3f7;
+            color: #81d4fa;
+            background: rgba(13, 59, 90, 0.4);
+        }
+
+        /* ---------- Zelda: NES gold & forest theme ---------- */
+        .card-zelda {
+            background: linear-gradient(135deg, #1a2e1a 0%, #0f1f0f 100%);
+            border-left-color: #f4c542;
+            box-shadow: 0 4px 20px rgba(244, 197, 66, 0.12);
+            font-family: "Courier New", monospace;
+        }
+        .card-zelda h3 {
+            color: #f4c542;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .card-zelda p {
+            color: #d6e8c7;
+        }
+        .card-zelda .external-link {
+            background: #2b1f0a;
+            border: 1px solid #f4c542;
+            color: #f4c542;
+        }
+        .card-zelda .external-link:hover {
+            background: #3d2c0f;
+            color: #fff3b0;
+        }
+
+        /* ---------- Observed: violet flashlight theme ---------- */
+        .card-observed {
+            background:
+                radial-gradient(circle at 20% 0%, rgba(141, 91, 250, 0.25) 0%, transparent 50%),
+                linear-gradient(135deg, #181424 0%, #0d0b17 100%);
+            border-left-color: #8d5bfa;
+            box-shadow: 0 4px 20px rgba(141, 91, 250, 0.18);
+        }
+        .card-observed h3 {
+            color: #c9b3ff;
+            font-style: italic;
+        }
+        .card-observed p {
+            color: #cfc7e0;
+        }
+        .card-observed .external-link {
+            background: #251a3d;
+            border: 1px solid #8d5bfa;
+            color: #b89bff;
+        }
+        .card-observed .external-link:hover {
+            background: #362657;
+            color: #ffffff;
+        }
     </style>
 </head>
 
@@ -107,10 +174,10 @@
         <h2>Projects</h2>
 
         <!-- Deep Divide Project -->
-        <div class="project-card">
+        <div class="project-card card-deepdivide">
             <h3>Deep Divide</h3>
             <p>
-                A two-player local co-op underwater exploration game built in Unity. One player captains the boat, navigating by radar and fending off pirate raids on the surface, while the other dives below to loot shipwrecks and reefs before their oxygen runs out. Players must hit a daily quota at the merchant, buy upgrades, and push deeper across a five-day run — losing everything they're carrying if they die underwater. I contributed to gameplay systems, UI/UX design, onboarding (tutorial, intro cinematic, contextual hints), diving feel (oxygen HUD, crosshair, underwater effects), and the boat physics rewrite. The game was presented at a university game expo and is in continued development toward a full public release.
+                A two-player local co-op underwater exploration game built in Unity. One player captains the boat, navigating by radar and fending off pirate raids on the surface, while the other dives below to loot shipwrecks and reefs before their oxygen runs out. Players must hit a daily quota at the merchant, buy upgrades, and push deeper across a five-day run &mdash; losing everything they're carrying if they die underwater. I contributed mainly to gameplay systems, UI/UX design, onboarding (tutorial, intro cinematic, contextual hints), diving feel (oxygen HUD, crosshair, underwater effects), and physics handling. The game was presented at a university game expo and is in continued development toward a full public release.
             </p>
 
             <a class="external-link" href="https://gamejolt.com/games/deep-divide/1065449" target="_blank" rel="noopener">
@@ -124,24 +191,24 @@
         </div>
 
         <!-- Zelda Project -->
-        <div class="project-card">
+        <div class="project-card card-zelda">
             <h3>The Legend of Zelda NES (Unity Remaster)</h3>
             <p>
                 Developed and integrated core gameplay systems for a Unity-based recreation of The Legend of Zelda (NES), designing combat, enemy AI, UI, and room interactions while implementing modular, reusable C# systems to support gameplay architecture. Contributed to testing and debugging features throughout development to ensure project stability.
             </p>
 
             <iframe frameborder="0"
-                src="https://itch.io/embed/4281611?bg_color=222222&amp;fg_color=eeeeee&amp;link_color=8d5bfa&amp;border_color=363636"
+                src="https://itch.io/embed/4281611?bg_color=1a2e1a&amp;fg_color=d6e8c7&amp;link_color=f4c542&amp;border_color=f4c542"
                 width="552"
                 height="167">
                 <a href="https://noahdelv.itch.io/the-legend-of-zelda-nes">
-                    The Legend of Yelda - NES (Remake) by noahdelv
+                    The Legend of Zelda - NES (Remake) by noahdelv
                 </a>
             </iframe>
         </div>
 
         <!-- Observed Project -->
-        <div class="project-card">
+        <div class="project-card card-observed">
             <h3>Observed</h3>
             <p>
                 A 2D puzzle-platformer built in Unity centered around a vision-based freeze mechanic.
