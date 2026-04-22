@@ -60,6 +60,38 @@
             text-decoration: underline;
         }
 
+        .external-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 14px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #4da3ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .external-link:hover {
+            background: #333;
+            border-color: #4da3ff;
+            text-decoration: none;
+        }
+
+        .embed-placeholder {
+            margin-top: 15px;
+            padding: 20px;
+            background: #2a2a2a;
+            border: 1px dashed #555;
+            border-radius: 6px;
+            color: #888;
+            text-align: center;
+            font-style: italic;
+            width: 512px;
+            max-width: 100%;
+        }
+
         iframe {
             margin-top: 15px;
             border-radius: 6px;
@@ -74,16 +106,33 @@
 
         <h2>Projects</h2>
 
+        <!-- Deep Divide Project -->
+        <div class="project-card">
+            <h3>Deep Divide</h3>
+            <p>
+                A two-player local co-op underwater exploration game built in Unity. One player captains the boat, navigating by radar and fending off pirate raids on the surface, while the other dives below to loot shipwrecks and reefs before their oxygen runs out. Players must hit a daily quota at the merchant, buy upgrades, and push deeper across a five-day run — losing everything they're carrying if they die underwater. I contributed to gameplay systems, UI/UX design, onboarding (tutorial, intro cinematic, contextual hints), diving feel (oxygen HUD, crosshair, underwater effects), and the boat physics rewrite. The game was presented at a university game expo and is in continued development toward a full public release.
+            </p>
+
+            <a class="external-link" href="https://gamejolt.com/games/deep-divide/1065449" target="_blank" rel="noopener">
+                View on GameJolt &rarr;
+            </a>
+
+            <!-- TODO: Replace with itch.io embed when published -->
+            <div class="embed-placeholder">
+                itch.io embed coming soon
+            </div>
+        </div>
+
         <!-- Zelda Project -->
         <div class="project-card">
             <h3>The Legend of Zelda NES (Unity Remaster)</h3>
             <p>
                 Developed and integrated core gameplay systems for a Unity-based recreation of The Legend of Zelda (NES), designing combat, enemy AI, UI, and room interactions while implementing modular, reusable C# systems to support gameplay architecture. Contributed to testing and debugging features throughout development to ensure project stability.
             </p>
-            
-            <iframe frameborder="0" 
-                src="https://itch.io/embed/4281611?bg_color=222222&amp;fg_color=eeeeee&amp;link_color=8d5bfa&amp;border_color=363636" 
-                width="552" 
+
+            <iframe frameborder="0"
+                src="https://itch.io/embed/4281611?bg_color=222222&amp;fg_color=eeeeee&amp;link_color=8d5bfa&amp;border_color=363636"
+                width="552"
                 height="167">
                 <a href="https://noahdelv.itch.io/the-legend-of-zelda-nes">
                     The Legend of Yelda - NES (Remake) by noahdelv
@@ -95,18 +144,18 @@
         <div class="project-card">
             <h3>Observed</h3>
             <p>
-                A 2D puzzle-platformer built in Unity centered around a vision-based freeze mechanic. 
-                Players use a directional flashlight to freeze enemies and platforms within their line of sight, 
-                transforming hazards into traversal tools and puzzle elements. 
-                I designed and implemented the core vision-cone detection and freeze system using a PubSub/EventBus architecture 
-                to keep gameplay systems modular and decoupled. I also developed player movement and aiming systems, 
-                reactive moving platforms, vision-blocking mechanics, a jump system, audio feedback integration, 
+                A 2D puzzle-platformer built in Unity centered around a vision-based freeze mechanic.
+                Players use a directional flashlight to freeze enemies and platforms within their line of sight,
+                transforming hazards into traversal tools and puzzle elements.
+                I designed and implemented the core vision-cone detection and freeze system using a PubSub/EventBus architecture
+                to keep gameplay systems modular and decoupled. I also developed player movement and aiming systems,
+                reactive moving platforms, vision-blocking mechanics, a jump system, audio feedback integration,
                 and camera refinements to improve overall clarity and game feel.
             </p>
 
-            <iframe frameborder="0" 
-                src="https://itch.io/embed/4340016?dark=true" 
-                width="552" 
+            <iframe frameborder="0"
+                src="https://itch.io/embed/4340016?dark=true"
+                width="552"
                 height="167">
                 <a href="https://noahdelv.itch.io/observed">
                     Observed by noahdelv
