@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects &mdash; Noah Del Valle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Noah Del Valle</a>
+        <ul class="nav-links">
+            <li><a href="index.html">About</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="page">
+
+    <h1>Projects</h1>
+    <p style="margin-top: 14px; text-align: left; color: var(--text-muted); font-size: 0.925rem;">
+        Work spanning game development and software engineering &mdash;
+        see the <a href="resume.html">resume</a> for full details on each.
+    </p>
+
+    <!-- ── Software Engineering ── -->
+    <h2>Software Engineering</h2>
+
+    <div class="project-card" id="prediction-market-tracker">
+        <div class="resume-entry-header">
+            <h3>Prediction Market Tracker</h3>
+            <span class="resume-date">January 2026 &mdash; Present</span>
+        </div>
+        <div class="tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Prisma</span>
+        </div>
+        <p>
+            A prediction market intelligence platform that identifies high-conviction traders by
+            tracking whale-sized trades across Polymarket and Kalshi, scoring wallets by demonstrated
+            prediction skill. A data ingestion pipeline processes 1,000+ market events per hour into
+            PostgreSQL via Prisma ORM, powering analytics dashboards and trading charts. A scoring
+            engine evaluates 2,000+ wallets across resolved markets using win-rate and Brier score
+            metrics, surfacing ranked forecasters via a React leaderboard backed by an Express REST API.
+        </p>
+    </div>
+
+    <div class="project-card" id="file-network-server">
+        <div class="resume-entry-header">
+            <h3>File Network Server</h3>
+            <span class="resume-date">November &mdash; December 2025</span>
+        </div>
+        <div class="tags">
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">Multi-threading</span>
+            <span class="tag">Concurrency</span>
+        </div>
+        <p>
+            A multi-client networked file system server in C++, built as a team project at the
+            University of Michigan. The server supports remote file operations over a custom
+            client&ndash;server protocol using a multi-threaded architecture with mutexes and
+            RAII-style lock guards, enforcing atomic file and directory operations under concurrent
+            access. The request/response handling layer includes full validation and error handling;
+            the system was stress-tested to verify correctness and reliability under high contention.
+        </p>
+        <div class="code-note">Source code available on request &mdash; private academic repository</div>
+    </div>
+
+    <div class="project-card" id="distributed-search-engine">
+        <div class="resume-entry-header">
+            <h3>Distributed Search Engine</h3>
+            <span class="resume-date">October &mdash; November 2024</span>
+        </div>
+        <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">MapReduce</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">tf-idf</span>
+            <span class="tag">PageRank</span>
+        </div>
+        <p>
+            A distributed search engine indexing 10,000+ Wikipedia articles, built at the University
+            of Michigan. A MapReduce pipeline builds a segmented inverted index with tf-idf weighting
+            and document normalization. A Flask REST index server loads index segments, PageRank data,
+            and stopwords into memory to serve ranked results using cosine similarity and weighted
+            PageRank scoring. A search aggregator performs concurrent API requests across multiple
+            index servers, merges ranked results, and serves a dynamic search interface backed by
+            SQLite metadata storage.
+        </p>
+        <div class="code-note">Source code available on request &mdash; private academic repository</div>
+        <img class="project-screenshot" src="search-engine_screenshot.png" alt="Distributed search engine interface screenshot">
+        <p class="image-credit">
+            Screenshot from the <a href="https://eecs485staff.github.io/p3-insta485-clientside/" target="_blank" rel="noopener">EECS 485 project specification</a>
+            by Andrew DeOrio and the EECS 485 staff, licensed under
+            <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>.
+        </p>
+    </div>
+
+    <div class="project-card" id="social-media-platform">
+        <div class="resume-entry-header">
+            <h3>Full-Stack Social Media Platform</h3>
+            <span class="resume-date">September &mdash; October 2024</span>
+        </div>
+        <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">AWS EC2</span>
+            <span class="tag">REST API</span>
+            <span class="tag">SQL</span>
+        </div>
+        <p>
+            An Instagram-style social media platform with a React frontend and Flask REST API backend,
+            built at the University of Michigan. Supports authenticated CRUD operations, pagination,
+            and proper HTTP status handling for posts, comments, and likes. Features include infinite
+            scroll, double-click-to-like interactions, and real-time feed updates via asynchronous
+            Fetch API requests, backed by a normalized relational schema with optimized SQL queries
+            for personalized feeds. Deployed to AWS EC2 with a configured Webpack build pipeline.
+        </p>
+        <div class="code-note">Source code available on request &mdash; private academic repository</div>
+        <img class="project-screenshot" src="insta485-screenshot.png" alt="Insta485 social media platform UI screenshot">
+        <p class="image-credit">
+            Screenshot from the <a href="https://eecs485staff.github.io/p3-insta485-clientside/" target="_blank" rel="noopener">EECS 485 project specification</a>
+            by Andrew DeOrio and the EECS 485 staff, licensed under
+            <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>.
+        </p>
+    </div>
+
+    <!-- ── Game Development ── -->
+    <h2>Game Development</h2>
+
+    <div class="project-card" id="deep-divide">
+        <div class="resume-entry-header">
+            <h3>Deep Divide</h3>
+            <span class="resume-date">2024 &mdash; Present</span>
+        </div>
+        <div class="tags">
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+            <span class="tag">Co-op</span>
+            <span class="tag">UI/UX</span>
+            <span class="tag">Game Design</span>
+        </div>
+        <p>
+            A two-player local co-op underwater exploration game. One player captains the boat &mdash;
+            navigating by radar and fending off pirate raids &mdash; while the other dives below to
+            loot shipwrecks and reefs before their oxygen runs out. Players hit a daily quota at the
+            merchant, buy upgrades, and push deeper across a five-day run, losing everything they carry
+            if they die underwater. I contributed gameplay systems, UI/UX design, onboarding (tutorial,
+            intro cinematic, contextual hints), diving feel (oxygen HUD, crosshair, underwater effects),
+            and physics handling. Presented at a university game expo; in continued development toward
+            a full public release.
+        </p>
+        <div class="card-actions">
+            <a class="btn btn-outline" href="https://gamejolt.com/games/deep-divide/1065449" target="_blank" rel="noopener">
+                View on GameJolt &nearr;
+            </a>
+        </div>
+        <img class="project-screenshot" src="deep-divide_ss.png" alt="Deep Divide gameplay screenshot">
+    </div>
+
+    <div class="project-card" id="zelda-nes">
+        <div class="resume-entry-header">
+            <h3>The Legend of Zelda NES (Unity Remaster)</h3>
+            <span class="resume-date">2024</span>
+        </div>
+        <div class="tags">
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+            <span class="tag">Enemy AI</span>
+            <span class="tag">Game Systems</span>
+        </div>
+        <p>
+            A Unity-based recreation of The Legend of Zelda (NES), developed as a team project.
+            I designed and integrated core gameplay systems &mdash; combat, enemy AI, UI, and room
+            transitions &mdash; while implementing modular, reusable C# architecture to support the
+            overall gameplay structure. Contributed to testing and debugging throughout development
+            to ensure project stability.
+        </p>
+        <div class="embed-container">
+            <iframe frameborder="0"
+                src="https://itch.io/embed/4281611?bg_color=111111&amp;fg_color=e0e0e0&amp;link_color=4fc3f7&amp;border_color=2c2c2c"
+                width="552" height="167">
+                <a href="https://noahdelv.itch.io/the-legend-of-zelda-nes">The Legend of Zelda - NES (Remake) by noahdelv</a>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="project-card" id="observed">
+        <div class="resume-entry-header">
+            <h3>Observed</h3>
+            <span class="resume-date">2024</span>
+        </div>
+        <div class="tags">
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+            <span class="tag">Puzzle-Platformer</span>
+            <span class="tag">PubSub / EventBus</span>
+        </div>
+        <p>
+            A 2D puzzle-platformer built in Unity centered around a vision-based freeze mechanic.
+            Players use a directional flashlight to freeze enemies and platforms within their line of
+            sight, transforming hazards into traversal tools and puzzle elements. I designed and
+            implemented the core vision-cone detection and freeze system using a PubSub/EventBus
+            architecture to keep systems modular and decoupled. Also developed player movement and
+            aiming, reactive moving platforms, vision-blocking mechanics, a jump system, audio
+            feedback integration, and camera refinements to improve game feel and clarity.
+        </p>
+        <div class="embed-container">
+            <iframe frameborder="0"
+                src="https://itch.io/embed/4340016?dark=true"
+                width="552" height="167">
+                <a href="https://noahdelv.itch.io/observed">Observed by noahdelv</a>
+            </iframe>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        &copy; 2026 Noah Ethan Del Valle. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
