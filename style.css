@@ -13,7 +13,7 @@
     --accent-border: rgba(79, 195, 247, 0.25);
     --text: #e0e0e0;
     --text-dim: #bbbbbb;
-    --text-muted: #777777;
+    --text-muted: #8a8a8a;
     --border: #2c2c2c;
     --radius: 8px;
     --width: 720px;
@@ -120,11 +120,11 @@ h1 {
 }
 
 h2 {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-muted);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     margin: 48px 0 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
@@ -333,20 +333,12 @@ h4 {
     margin-bottom: 5px;
     line-height: 1.5;
     font-size: 0.925rem;
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
 }
 
-/* ── Skills list (resume) ── */
-.skills-list p {
-    text-align: left;
-    margin-bottom: 4px;
-    font-size: 0.925rem;
-}
-
-.skills-list strong {
-    color: var(--text);
-}
-
-/* ── Skills grid (about) ── */
+/* ── Skills grid (about + resume) ── */
 .skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
