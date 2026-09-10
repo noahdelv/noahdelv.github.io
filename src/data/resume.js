@@ -32,7 +32,7 @@ export const softwareProjects = [
         ],
     },
     {
-        date: 'Nov — Dec 2025',
+        date: 'Jul — Aug 2026',
         org: 'File Network Server',
         slug: 'file-network-server',
         sub: 'C++, Python, Multi-threading, Concurrency — University of Michigan',
