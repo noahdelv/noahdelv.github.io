@@ -1,124 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noah Del Valle — Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<nav>
-    <div class="nav-inner">
-        <a href="index.html" class="nav-logo">Noah Del Valle</a>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">About</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="projects.html">Projects</a></li>
-        </ul>
-    </div>
-</nav>
-
-<main class="page">
-
-    <div class="hero">
-        <div class="avatar">
-            <img src="avatar.png" alt="Noah Del Valle">
-        </div>
-        <div>
-            <h1>Noah Ethan Del Valle</h1>
-            <p class="hero-tagline">
-                CS @ University of Michigan &nbsp;&middot;&nbsp; Game Developer &nbsp;&middot;&nbsp; Full&#8209;Stack&nbsp;Engineer
-            </p>
-            <div class="hero-ctas">
-                <a href="projects.html" class="btn btn-primary">View Projects &rarr;</a>
-                <a href="resume.html" class="btn btn-outline">Resume</a>
-            </div>
-        </div>
-    </div>
-
-    <h2>About Me</h2>
-
-    <div class="bio">
-        <p>
-            I'm a Computer Science student at the University of Michigan College of Engineering,
-            graduating in August 2026. My work spans the full stack &mdash; from distributed systems
-            and concurrent servers in C++ to React frontends and REST APIs &mdash; but I'm especially
-            drawn to projects where engineering decisions directly shape how something feels to use.
-        </p>
-        <p>
-            I got into computer science through games, and game development remains a central part of
-            how I think about software. Building a co-op underwater exploration game from scratch taught
-            me more about systems design than most coursework: how input latency shapes feel, how UI
-            communicates state under pressure, how a single mechanic can define or sink an experience.
-            That thinking carries into backend work &mdash; I care about the clarity of an API, the
-            responsiveness of a data pipeline, and the usability of whatever I'm building.
-        </p>
-        <p>
-            Currently, I work as an AI Data Specialist at Handshake, designing adversarial prompts to
-            stress-test multimodal LLMs and building computer vision training datasets. I'm looking for
-            roles in software engineering or game development where I can keep growing across systems,
-            product, and design.
-        </p>
-        <p>
-            Outside of coding, I spend time playing and talking about games endlessly, making and
-            listening to music, and staying active.
-        </p>
-    </div>
-
-    <h2>Skills</h2>
-
-    <div class="skills-grid">
-        <div>
-            <h4>Languages</h4>
-            <div class="tags">
-                <span class="tag">C++</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Python</span>
-                <span class="tag">C#</span>
-                <span class="tag">SQL</span>
-            </div>
-        </div>
-        <div>
-            <h4>Frameworks &amp; Libraries</h4>
-            <div class="tags">
-                <span class="tag">React</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">Express</span>
-                <span class="tag">Flask</span>
-                <span class="tag">Prisma</span>
-                <span class="tag">Unity</span>
-            </div>
-        </div>
-        <div>
-            <h4>Databases</h4>
-            <div class="tags">
-                <span class="tag">PostgreSQL</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">MongoDB</span>
-                <span class="tag">SQLite</span>
-            </div>
-        </div>
-        <div>
-            <h4>Tools &amp; Infrastructure</h4>
-            <div class="tags">
-                <span class="tag">AWS EC2</span>
-                <span class="tag">Docker</span>
-                <span class="tag">Git</span>
-                <span class="tag">Webpack</span>
-                <span class="tag">Jira</span>
-            </div>
-        </div>
-    </div>
-
-</main>
-
-<footer>
-    <div class="footer-inner">
-        &copy; 2026 Noah Ethan Del Valle. All rights reserved.
-    </div>
-</footer>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Noah Ethan Del Valle — software engineer and game developer. CS at the University of Michigan." />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500&display=swap"
+    />
+    <title>Noah Del Valle</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

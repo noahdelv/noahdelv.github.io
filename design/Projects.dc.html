@@ -1,0 +1,470 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #c6ff4f; text-decoration: none; }
+    a:hover { color: #e2ff9c; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 4500px; background: #0a0a0a; color: #fafafa; font-family: 'JetBrains Mono', ui-monospace, monospace; -webkit-font-smoothing: antialiased;">
+
+  <!-- Nav -->
+  <div style="display: flex; align-items: stretch; justify-content: space-between; border-bottom: 1px solid #262626;">
+    <div style="display: flex; align-items: center; padding: 0 28px; border-right: 1px solid #262626; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; height: 56px;">
+      <span style="color: #c6ff4f;">~/</span>noahdelv
+    </div>
+    <div style="display: flex; align-items: stretch;">
+      <div style="display: flex; align-items: center; padding: 0 26px; border-left: 1px solid #262626; font-size: 12px; letter-spacing: 0.04em; color: #9e9e9e;">about</div>
+      <div style="display: flex; align-items: center; padding: 0 26px; border-left: 1px solid #262626; font-size: 12px; letter-spacing: 0.04em; color: #9e9e9e;">resume</div>
+      <div style="display: flex; align-items: center; padding: 0 26px; border-left: 1px solid #262626; font-size: 12px; letter-spacing: 0.04em; color: #0a0a0a; background: #c6ff4f; font-weight: 500;">projects</div>
+    </div>
+  </div>
+
+  <!-- Page header -->
+  <div style="padding: 52px 56px 36px; border-bottom: 1px solid #262626; display: flex; flex-direction: column; gap: 20px;">
+    <div style="font-size: 12px; letter-spacing: 0.14em; color: #c6ff4f;">[ PROJECTS ]</div>
+    <div style="font-size: 46px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: #fafafa;">PROJECT INDEX</div>
+    <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.66; color: #b4b4b4; max-width: 680px; text-wrap: pretty;">Work spanning game development and software engineering. Filter by type, by what it was built with, or by the problem it solves.</div>
+  </div>
+
+  <!-- Filters -->
+  <div style="padding: 28px 56px 30px; border-bottom: 1px solid #262626; display: flex; flex-direction: column; gap: 22px;">
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a; width: 64px; flex-shrink: 0;">TYPE</div>
+      <div style="display: flex; gap: 0;">
+        <sc-for list="{{ typeBtns }}" as="btn" hint-placeholder-count="3">
+          <div onClick="{{ btn.pick }}" style="border: 1px solid #333333; border-left: {{btn.leftBorder}}; background: {{btn.bg}}; color: {{btn.fg}}; padding: 9px 20px; font-size: 12px; font-weight: {{btn.weight}}; letter-spacing: 0.04em; cursor: pointer; user-select: none;">{{ btn.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 20px;">
+      <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a; width: 64px; flex-shrink: 0; padding-top: 7px;">STACK</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        <sc-for list="{{ stackTags }}" as="tag" hint-placeholder-count="12">
+          <div onClick="{{ tag.pick }}" style="font-size: 11px; padding: 6px 11px; border: 1px solid {{tag.bc}}; background: {{tag.bg}}; color: {{tag.fg}}; cursor: pointer; user-select: none;">{{ tag.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 20px;">
+      <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a; width: 64px; flex-shrink: 0; padding-top: 7px;">FOCUS</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        <sc-for list="{{ focusTags }}" as="tag" hint-placeholder-count="18">
+          <div onClick="{{ tag.pick }}" style="font-size: 11px; padding: 6px 11px; border: 1px solid {{tag.bc}}; background: {{tag.bg}}; color: {{tag.fg}}; cursor: pointer; user-select: none;">{{ tag.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 20px; padding-top: 4px;">
+      <div style="width: 64px; flex-shrink: 0;"></div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="font-size: 12px; color: {{statusColor}}; letter-spacing: 0.06em;">{{ statusText }}</div>
+        <sc-if value="{{ anyFilter }}" hint-placeholder-val="{{ true }}">
+          <div onClick="{{ clearAll }}" style="font-size: 11px; letter-spacing: 0.06em; color: #7d7d7d; border-bottom: 1px solid #333333; cursor: pointer; user-select: none;">CLEAR FILTERS</div>
+        </sc-if>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Empty state -->
+  <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 80px 56px; border-bottom: 1px solid #262626; display: flex; flex-direction: column; gap: 12px; align-items: center;">
+      <div style="font-size: 14px; color: #9e9e9e; letter-spacing: 0.06em;">NO PROJECTS MATCH THIS COMBINATION</div>
+      <div onClick="{{ clearAll }}" style="font-size: 12px; color: #c6ff4f; letter-spacing: 0.06em; cursor: pointer; user-select: none;">CLEAR FILTERS</div>
+    </div>
+  </sc-if>
+
+  <!-- 001 -->
+  <sc-if value="{{ show.p1 }}" hint-placeholder-val="{{ true }}">
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 44px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 12px; color: #7d7d7d; letter-spacing: 0.1em;">001</div>
+        <div style="font-size: 10px; letter-spacing: 0.12em; color: #c6ff4f; border: 1px solid #3d4a1f; padding: 3px 8px;">SWE</div>
+      </div>
+      <div style="height: 1px; background: #1c1c1c;"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">PERIOD</div>
+        <div style="font-size: 12px; color: #d4d4d4;">Jan 2026 &mdash; Present</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">STACK</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>typescript</div><div>react</div><div>node / express</div><div>postgresql</div><div>prisma</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">FOCUS</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>data pipelines</div><div>trader scoring</div><div>analytics dashboards</div>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: #fafafa;">prediction-market-tracker</div>
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #b4b4b4; text-wrap: pretty;">A prediction market intelligence platform that identifies high-conviction traders by tracking whale-sized trades across Polymarket and Kalshi, scoring wallets by demonstrated prediction skill. A data ingestion pipeline processes 1,000+ market events per hour into PostgreSQL via Prisma ORM, powering analytics dashboards and trading charts. A scoring engine evaluates 2,000+ wallets across resolved markets using win-rate and Brier score metrics, surfacing ranked forecasters via a React leaderboard backed by an Express REST API.</div>
+      <div style="display: inline-flex; align-items: center; gap: 9px; border: 1px solid #262626; background: #111111; padding: 8px 14px; font-size: 12px; color: #9e9e9e; align-self: flex-start;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Source available on request &mdash; private repository, active development
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- 002 -->
+  <sc-if value="{{ show.p2 }}" hint-placeholder-val="{{ true }}">
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 44px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 12px; color: #7d7d7d; letter-spacing: 0.1em;">002</div>
+        <div style="font-size: 10px; letter-spacing: 0.12em; color: #c6ff4f; border: 1px solid #3d4a1f; padding: 3px 8px;">SWE</div>
+      </div>
+      <div style="height: 1px; background: #1c1c1c;"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">PERIOD</div>
+        <div style="font-size: 12px; color: #d4d4d4;">Nov &mdash; Dec 2025</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">STACK</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>c++</div><div>python</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">FOCUS</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>concurrency</div><div>thread safety</div><div>custom protocols</div>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: #fafafa;">file-network-server</div>
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #b4b4b4; text-wrap: pretty;">A multi-client networked file system server in C++, built as a team project at the University of Michigan. The server supports remote file operations over a custom client&ndash;server protocol using a multi-threaded architecture with mutexes and RAII-style lock guards, enforcing atomic file and directory operations under concurrent access. The request/response handling layer includes full validation and error handling; the system was stress-tested to verify correctness and reliability under high contention.</div>
+      <div style="display: inline-flex; align-items: center; gap: 9px; border: 1px solid #262626; background: #111111; padding: 8px 14px; font-size: 12px; color: #9e9e9e; align-self: flex-start;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Source available on request &mdash; private academic repository
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- 003 -->
+  <sc-if value="{{ show.p3 }}" hint-placeholder-val="{{ true }}">
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 44px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 12px; color: #7d7d7d; letter-spacing: 0.1em;">003</div>
+        <div style="font-size: 10px; letter-spacing: 0.12em; color: #c6ff4f; border: 1px solid #3d4a1f; padding: 3px 8px;">SWE</div>
+      </div>
+      <div style="height: 1px; background: #1c1c1c;"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">PERIOD</div>
+        <div style="font-size: 12px; color: #d4d4d4;">Oct &mdash; Nov 2024</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">STACK</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>python</div><div>flask</div><div>sqlite</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">FOCUS</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>mapreduce</div><div>tf-idf</div><div>pagerank</div><div>information retrieval</div>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: #fafafa;">distributed-search-engine</div>
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #b4b4b4; text-wrap: pretty;">A distributed search engine indexing 10,000+ Wikipedia articles, built at the University of Michigan. A MapReduce pipeline builds a segmented inverted index with tf-idf weighting and document normalization. A Flask REST index server loads index segments, PageRank data, and stopwords into memory to serve ranked results using cosine similarity and weighted PageRank scoring. A search aggregator performs concurrent API requests across multiple index servers, merges ranked results, and serves a dynamic search interface backed by SQLite metadata storage.</div>
+      <div style="display: inline-flex; align-items: center; gap: 9px; border: 1px solid #262626; background: #111111; padding: 8px 14px; font-size: 12px; color: #9e9e9e; align-self: flex-start;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Source available on request &mdash; private academic repository
+      </div>
+      <img src="search-mock.jpg" alt="Distributed search engine interface" style="width: 100%; height: 300px; object-fit: cover; object-position: top; display: block; border: 1px solid #262626;">
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 11px; line-height: 1.6; color: #8a8a8a; font-style: italic;">Screenshot from the EECS 485 project specification by Andrew DeOrio and the EECS 485 staff, licensed under CC BY-NC 4.0.</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- 004 -->
+  <sc-if value="{{ show.p4 }}" hint-placeholder-val="{{ true }}">
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 44px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 12px; color: #7d7d7d; letter-spacing: 0.1em;">004</div>
+        <div style="font-size: 10px; letter-spacing: 0.12em; color: #c6ff4f; border: 1px solid #3d4a1f; padding: 3px 8px;">SWE</div>
+      </div>
+      <div style="height: 1px; background: #1c1c1c;"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">PERIOD</div>
+        <div style="font-size: 12px; color: #d4d4d4;">Sep &mdash; Oct 2024</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">STACK</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>react</div><div>python</div><div>flask</div><div>aws ec2</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">FOCUS</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>rest api design</div><div>relational modeling</div><div>infinite scroll</div>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: #fafafa;">social-media-platform</div>
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #b4b4b4; text-wrap: pretty;">An Instagram-style social media platform with a React frontend and Flask REST API backend, built at the University of Michigan. Supports authenticated CRUD operations, pagination, and proper HTTP status handling for posts, comments, and likes. Features include infinite scroll, double-click-to-like interactions, and real-time feed updates via asynchronous Fetch API requests, backed by a normalized relational schema with optimized SQL queries for personalized feeds. Deployed to AWS EC2 with a configured Webpack build pipeline.</div>
+      <div style="display: inline-flex; align-items: center; gap: 9px; border: 1px solid #262626; background: #111111; padding: 8px 14px; font-size: 12px; color: #9e9e9e; align-self: flex-start;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Source available on request &mdash; private academic repository
+      </div>
+      <img src="insta-mock.jpg" alt="Social platform interface" style="width: 100%; height: 300px; object-fit: cover; object-position: top; display: block; border: 1px solid #262626;">
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 11px; line-height: 1.6; color: #8a8a8a; font-style: italic;">Screenshot from the EECS 485 project specification by Andrew DeOrio and the EECS 485 staff, licensed under CC BY-NC 4.0.</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- 005 -->
+  <sc-if value="{{ show.p5 }}" hint-placeholder-val="{{ true }}">
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 44px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 12px; color: #7d7d7d; letter-spacing: 0.1em;">005</div>
+        <div style="font-size: 10px; letter-spacing: 0.12em; color: #7dd3fc; border: 1px solid #1e4257; padding: 3px 8px;">GAME</div>
+      </div>
+      <div style="height: 1px; background: #1c1c1c;"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">PERIOD</div>
+        <div style="font-size: 12px; color: #d4d4d4;">2024 &mdash; Present</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">STACK</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>unity</div><div>c#</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">FOCUS</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>co-op design</div><div>ui/ux</div><div>onboarding</div><div>game feel</div>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: #fafafa;">deep-divide</div>
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #b4b4b4; text-wrap: pretty;">A two-player local co-op underwater exploration game. One player captains the boat &mdash; navigating by radar and fending off pirate raids &mdash; while the other dives below to loot shipwrecks and reefs before their oxygen runs out. Players hit a daily quota at the merchant, buy upgrades, and push deeper across a five-day run, losing everything they carry if they die underwater. I contributed gameplay systems, UI/UX design, onboarding (tutorial, intro cinematic, contextual hints), diving feel (oxygen HUD, crosshair, underwater effects), and physics handling. Presented at a university game expo; in continued development toward a full public release.</div>
+      <div style="display: flex; gap: 0; align-self: flex-start;">
+        <div style="display: flex; align-items: center; gap: 9px; border: 1px solid #333333; color: #d4d4d4; padding: 10px 18px; font-size: 12px; font-weight: 500; letter-spacing: 0.03em;">
+          VIEW ON GAMEJOLT
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </div>
+      </div>
+      <img src="dive-mock.jpg" alt="Deep Divide gameplay" style="width: 100%; height: 340px; object-fit: cover; display: block; border: 1px solid #262626;">
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- 006 -->
+  <sc-if value="{{ show.p6 }}" hint-placeholder-val="{{ true }}">
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 44px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 12px; color: #7d7d7d; letter-spacing: 0.1em;">006</div>
+        <div style="font-size: 10px; letter-spacing: 0.12em; color: #7dd3fc; border: 1px solid #1e4257; padding: 3px 8px;">GAME</div>
+      </div>
+      <div style="height: 1px; background: #1c1c1c;"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">PERIOD</div>
+        <div style="font-size: 12px; color: #d4d4d4;">2024</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">STACK</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>unity</div><div>c#</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">FOCUS</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>enemy ai</div><div>combat systems</div><div>modular architecture</div>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: #fafafa;">zelda-nes-remaster</div>
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #b4b4b4; text-wrap: pretty;">A Unity-based recreation of The Legend of Zelda (NES), developed as a team project. I designed and integrated core gameplay systems &mdash; combat, enemy AI, UI, and room transitions &mdash; while implementing modular, reusable C# architecture to support the overall gameplay structure. Contributed to testing and debugging throughout development to ensure project stability.</div>
+      <div style="border: 1px solid #262626; background: #111111; padding: 20px 22px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-size: 13px; font-weight: 500; color: #e5e5e5;">The Legend of Zelda &mdash; NES (Remake)</div>
+          <div style="font-size: 11px; color: #8a8a8a; letter-spacing: 0.06em;">itch.io embed &middot; noahdelv</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; border: 1px solid #333333; color: #d4d4d4; padding: 9px 16px; font-size: 12px; letter-spacing: 0.03em;">
+          PLAY
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- 007 -->
+  <sc-if value="{{ show.p7 }}" hint-placeholder-val="{{ true }}">
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 44px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-size: 12px; color: #7d7d7d; letter-spacing: 0.1em;">007</div>
+        <div style="font-size: 10px; letter-spacing: 0.12em; color: #7dd3fc; border: 1px solid #1e4257; padding: 3px 8px;">GAME</div>
+      </div>
+      <div style="height: 1px; background: #1c1c1c;"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">PERIOD</div>
+        <div style="font-size: 12px; color: #d4d4d4;">2024</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">STACK</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>unity</div><div>c#</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">FOCUS</div>
+        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #9e9e9e;">
+          <div>pubsub architecture</div><div>vision systems</div><div>player movement</div>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: #fafafa;">observed</div>
+      <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #b4b4b4; text-wrap: pretty;">A 2D puzzle-platformer built in Unity centered around a vision-based freeze mechanic. Players use a directional flashlight to freeze enemies and platforms within their line of sight, transforming hazards into traversal tools and puzzle elements. I designed and implemented the core vision-cone detection and freeze system using a PubSub/EventBus architecture to keep systems modular and decoupled. Also developed player movement and aiming, reactive moving platforms, vision-blocking mechanics, a jump system, audio feedback integration, and camera refinements.</div>
+      <div style="border: 1px solid #262626; background: #111111; padding: 20px 22px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <div style="font-size: 13px; font-weight: 500; color: #e5e5e5;">Observed</div>
+          <div style="font-size: 11px; color: #8a8a8a; letter-spacing: 0.06em;">itch.io embed &middot; noahdelv</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; border: 1px solid #333333; color: #d4d4d4; padding: 9px 16px; font-size: 12px; letter-spacing: 0.03em;">
+          PLAY
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":4500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { type: 'ALL', tags: [] };
+  }
+
+  projects() {
+    return [
+      { key: 'p1', type: 'SWE',  stack: ['typescript', 'react', 'node / express', 'postgresql', 'prisma'], focus: ['data pipelines', 'trader scoring', 'analytics dashboards'] },
+      { key: 'p2', type: 'SWE',  stack: ['c++', 'python'], focus: ['concurrency', 'thread safety', 'custom protocols'] },
+      { key: 'p3', type: 'SWE',  stack: ['python', 'flask', 'sqlite'], focus: ['mapreduce', 'tf-idf', 'pagerank', 'information retrieval'] },
+      { key: 'p4', type: 'SWE',  stack: ['react', 'python', 'flask', 'aws ec2'], focus: ['rest api design', 'relational modeling', 'infinite scroll'] },
+      { key: 'p5', type: 'GAME', stack: ['unity', 'c#'], focus: ['co-op design', 'ui/ux', 'onboarding', 'game feel'] },
+      { key: 'p6', type: 'GAME', stack: ['unity', 'c#'], focus: ['enemy ai', 'combat systems', 'modular architecture'] },
+      { key: 'p7', type: 'GAME', stack: ['unity', 'c#'], focus: ['pubsub architecture', 'vision systems', 'player movement'] }
+    ];
+  }
+
+  matches(p) {
+    if (this.state.type !== 'ALL' && p.type !== this.state.type) return false;
+    return this.state.tags.every(function (t) {
+      return p.stack.indexOf(t) !== -1 || p.focus.indexOf(t) !== -1;
+    });
+  }
+
+  toggleTag(t) {
+    var tags = this.state.tags.slice();
+    var i = tags.indexOf(t);
+    if (i === -1) { tags.push(t); } else { tags.splice(i, 1); }
+    this.setState({ tags: tags });
+  }
+
+  pad(n) {
+    return (n < 10 ? '0' : '') + n;
+  }
+
+  renderVals() {
+    var self = this;
+    var all = this.projects();
+
+    var show = {};
+    var shown = 0;
+    all.forEach(function (p) {
+      var ok = self.matches(p);
+      show[p.key] = ok;
+      if (ok) shown += 1;
+    });
+
+    var counts = { ALL: all.length, SWE: 0, GAME: 0 };
+    all.forEach(function (p) { counts[p.type] += 1; });
+
+    var typeBtns = ['ALL', 'SWE', 'GAME'].map(function (t, i) {
+      var on = self.state.type === t;
+      return {
+        label: t + ' · ' + self.pad(counts[t]),
+        bg: on ? '#c6ff4f' : 'transparent',
+        fg: on ? '#0a0a0a' : '#9e9e9e',
+        weight: on ? '500' : '400',
+        leftBorder: i === 0 ? '1px solid #333333' : 'none',
+        pick: function () { self.setState({ type: t }); }
+      };
+    });
+
+    var chip = function (label) {
+      var on = self.state.tags.indexOf(label) !== -1;
+      return {
+        label: label,
+        bg: on ? '#c6ff4f' : 'transparent',
+        fg: on ? '#0a0a0a' : '#9e9e9e',
+        bc: on ? '#c6ff4f' : '#262626',
+        pick: function () { self.toggleTag(label); }
+      };
+    };
+
+    var collect = function (field) {
+      var seen = [];
+      all.forEach(function (p) {
+        p[field].forEach(function (t) { if (seen.indexOf(t) === -1) seen.push(t); });
+      });
+      return seen.map(chip);
+    };
+
+    var anyFilter = this.state.type !== 'ALL' || this.state.tags.length > 0;
+
+    return {
+      show: show,
+      typeBtns: typeBtns,
+      stackTags: collect('stack'),
+      focusTags: collect('focus'),
+      isEmpty: shown === 0,
+      anyFilter: anyFilter,
+      statusColor: anyFilter ? '#c6ff4f' : '#8a8a8a',
+      statusText: 'SHOWING ' + this.pad(shown) + ' OF ' + this.pad(all.length),
+      clearAll: function () { self.setState({ type: 'ALL', tags: [] }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

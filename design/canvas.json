@@ -1,0 +1,71 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "Home — desktop",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1920
+    },
+    {
+      "file": "Projects.dc.html",
+      "title": "Projects — desktop (interactive)",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 4500,
+      "is_interactive": true
+    },
+    {
+      "file": "Resume.dc.html",
+      "title": "Resume — desktop",
+      "x": 3120,
+      "y": 0,
+      "w": 1440,
+      "h": 3400
+    },
+    {
+      "file": "HomeMobile.dc.html",
+      "title": "Home — mobile",
+      "x": 4680,
+      "y": 0,
+      "w": 390,
+      "h": 2760
+    },
+    {
+      "file": "ProjectsMobile.dc.html",
+      "title": "Projects — mobile",
+      "x": 5190,
+      "y": 0,
+      "w": 390,
+      "h": 2900
+    }
+  ],
+  "annotations": [
+    {
+      "id": "system-note",
+      "x": 0,
+      "y": -300,
+      "w": 460,
+      "text": "TERMINAL GRID — the system\n\nType: JetBrains Mono for structure and labels, IBM Plex Sans for anything longer than a line.\n\nColor: #0a0a0a ground, #fafafa text, #b4b4b4 body, #9e9e9e meta, #8a8a8a labels — every text grey clears 4.5:1 on the ground. Acid #c6ff4f is the single accent; #7dd3fc marks game projects only.\n\nRules: #262626 structural, #1c1c1c row separators, #333333 on controls. Zero border-radius anywhere. 56px page gutter on desktop, 20px on mobile."
+    },
+    {
+      "id": "filter-note",
+      "x": 1560,
+      "y": -300,
+      "w": 460,
+      "text": "STACK / FOCUS — and the filter\n\nThe old single column mixed three kinds of thing. Now STACK holds only what a project was built with, FOCUS holds the techniques and the problem.\n\nThis artboard is live: click any type button or tag chip to filter. Tags are additive — pick 'unity' plus 'enemy ai' and you narrow to one project. Filtering across both rails works too, and there is an empty state when nothing matches.\n\nThe home index shows both columns but does not filter; that belongs here."
+    },
+    {
+      "id": "mobile-note",
+      "x": 4680,
+      "y": -300,
+      "w": 440,
+      "text": "MOBILE — 390px\n\nThe desktop project table collapses to stacked rows; the hero's spec table stays full-width. Nav becomes a three-cell strip, all cells 46px. Every tap target is at least 44px.\n\nThe Projects screen is drawn in a filtered state — 'unity' active, 3 of 7 showing — to show what the mechanism looks like on a phone. The tag rails collapse behind a '+N MORE' chip rather than running to six rows."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

@@ -1,0 +1,41 @@
+/* ── Terminal Grid — design tokens ──
+   Lifted from the design canvas. Every text grey clears 4.5:1 on --bg. */
+
+:root {
+    /* Ground and ink */
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --text: #fafafa;
+    --text-value: #e5e5e5;
+    --text-list: #d4d4d4;
+    --text-body: #b4b4b4;
+    --text-meta: #9e9e9e;
+    --text-label: #8a8a8a;
+    --text-dim: #7d7d7d;
+
+    /* Accents — acid is the single accent; sky marks game projects only */
+    --accent: #c6ff4f;
+    --accent-hover: #e2ff9c;
+    --accent-border: #3d4a1f;
+    --game: #7dd3fc;
+    --game-border: #1e4257;
+
+    /* Rules — structural, row separator, control */
+    --rule: #262626;
+    --rule-soft: #1c1c1c;
+    --control: #333333;
+
+    /* Type */
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+
+    /* Metrics */
+    --gutter: 56px;
+    --shell: 1440px;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --gutter: 20px;
+    }
+}

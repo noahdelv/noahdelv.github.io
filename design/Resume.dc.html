@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #c6ff4f; text-decoration: none; }
+    a:hover { color: #e2ff9c; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 3400px; background: #0a0a0a; color: #fafafa; font-family: 'JetBrains Mono', ui-monospace, monospace; -webkit-font-smoothing: antialiased;">
+
+  <!-- Nav -->
+  <div style="display: flex; align-items: stretch; justify-content: space-between; border-bottom: 1px solid #262626;">
+    <div style="display: flex; align-items: center; padding: 0 28px; border-right: 1px solid #262626; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; height: 56px;">
+      <span style="color: #c6ff4f;">~/</span>noahdelv
+    </div>
+    <div style="display: flex; align-items: stretch;">
+      <div style="display: flex; align-items: center; padding: 0 26px; border-left: 1px solid #262626; font-size: 12px; letter-spacing: 0.04em; color: #9e9e9e;">about</div>
+      <div style="display: flex; align-items: center; padding: 0 26px; border-left: 1px solid #262626; font-size: 12px; letter-spacing: 0.04em; color: #0a0a0a; background: #c6ff4f; font-weight: 500;">resume</div>
+      <div style="display: flex; align-items: center; padding: 0 26px; border-left: 1px solid #262626; font-size: 12px; letter-spacing: 0.04em; color: #9e9e9e;">projects</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 52px 56px 44px; border-bottom: 1px solid #262626; align-items: end;">
+    <div style="grid-column: span 8; display: flex; flex-direction: column; gap: 18px;">
+      <div style="font-size: 12px; letter-spacing: 0.14em; color: #c6ff4f;">[ RESUME ]</div>
+      <div style="font-size: 46px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: #fafafa;">NOAH ETHAN DEL VALLE</div>
+      <div style="display: flex; gap: 0; margin-top: 6px;">
+        <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #333333; color: #d4d4d4; padding: 9px 18px; font-size: 12px; letter-spacing: 0.03em;">
+          LINKEDIN
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #333333; border-left: none; color: #d4d4d4; padding: 9px 18px; font-size: 12px; letter-spacing: 0.03em;">
+          GITHUB
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; background: #c6ff4f; color: #0a0a0a; padding: 9px 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.03em;">
+          DOWNLOAD PDF
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 13l6 6 6-6M5 21h14"/></svg>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 0; border: 1px solid #262626;">
+      <div style="display: flex; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid #1c1c1c; font-size: 11px;">
+        <div style="color: #8a8a8a;">LOCATION</div><div style="color: #e5e5e5;">Ann Arbor, MI</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid #1c1c1c; font-size: 11px;">
+        <div style="color: #8a8a8a;">DEGREE</div><div style="color: #e5e5e5;">BSE Computer Science</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; font-size: 11px;">
+        <div style="color: #8a8a8a;">STATUS</div>
+        <div style="display: flex; align-items: center; gap: 7px; color: #c6ff4f;">
+          <div style="width: 5px; height: 5px; background: #c6ff4f;"></div>OPEN TO WORK
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div style="padding: 22px 56px; border-bottom: 1px solid #262626; font-size: 12px; letter-spacing: 0.14em; color: #c6ff4f;">[ EDUCATION ]</div>
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 36px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">Expected Dec 2026</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 12px;">
+      <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: #fafafa;">University of Michigan College of Engineering</div>
+      <div style="font-size: 12px; color: #9e9e9e;">Bachelor of Science in Engineering, Computer Science &mdash; Ann Arbor, MI</div>
+      <div style="display: flex; gap: 14px; margin-top: 4px;">
+        <div style="font-size: 11px; letter-spacing: 0.1em; color: #7d7d7d; white-space: nowrap; padding-top: 3px;">COURSEWORK</div>
+        <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4; text-wrap: pretty;">Data Structures and Algorithms, Operating Systems, Computer Security, Computer Organization, Web Systems, Database Management Systems, Computer Game Design, Statistical Computing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div style="padding: 22px 56px; border-bottom: 1px solid #262626; font-size: 12px; letter-spacing: 0.14em; color: #c6ff4f;">[ EXPERIENCE ]</div>
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 36px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">Jan 2026 &mdash; Present</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 12px;">
+      <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: #fafafa;">Handshake AI</div>
+      <div style="font-size: 12px; color: #9e9e9e;">AI Data Specialist &mdash; Project Hedgehog &mdash; Remote</div>
+      <div style="display: flex; flex-direction: column; gap: 9px; margin-top: 4px; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4;">
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Design adversarial prompts to expose failure modes in multimodal LLM systems, improving robustness across edge cases and reasoning tasks.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Process and refine hundreds of video training assets for computer vision datasets, producing diverse model-ready media for large-scale AI training pipelines.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Execute computer vision annotation tasks, including bounding box placement and video masking, to advance spatial recognition and object detection model training.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div style="padding: 22px 56px; border-bottom: 1px solid #262626; font-size: 12px; letter-spacing: 0.14em; color: #c6ff4f;">[ TECHNICAL SKILLS ]</div>
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid #262626;">
+    <div style="padding: 26px 28px 26px 56px; border-right: 1px solid #262626; display: flex; flex-direction: column; gap: 12px;">
+      <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">LANGUAGES</div>
+      <div style="display: flex; flex-direction: column; gap: 7px; font-size: 13px; color: #d4d4d4;">
+        <div>c++</div><div>typescript</div><div>javascript</div><div>python</div><div>c#</div><div>sql</div>
+      </div>
+    </div>
+    <div style="padding: 26px 28px; border-right: 1px solid #262626; display: flex; flex-direction: column; gap: 12px;">
+      <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">FRAMEWORKS</div>
+      <div style="display: flex; flex-direction: column; gap: 7px; font-size: 13px; color: #d4d4d4;">
+        <div>react</div><div>node.js</div><div>express</div><div>flask</div><div>prisma</div><div>unity</div>
+      </div>
+    </div>
+    <div style="padding: 26px 28px; border-right: 1px solid #262626; display: flex; flex-direction: column; gap: 12px;">
+      <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">DATABASES</div>
+      <div style="display: flex; flex-direction: column; gap: 7px; font-size: 13px; color: #d4d4d4;">
+        <div>postgresql</div><div>mysql</div><div>mongodb</div><div>sqlite</div>
+      </div>
+    </div>
+    <div style="padding: 26px 56px 26px 28px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="font-size: 11px; letter-spacing: 0.12em; color: #8a8a8a;">TOOLS &amp; INFRA</div>
+      <div style="display: flex; flex-direction: column; gap: 7px; font-size: 13px; color: #d4d4d4;">
+        <div>aws ec2</div><div>docker</div><div>git</div><div>webpack</div><div>jira</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOFTWARE PROJECTS -->
+  <div style="padding: 22px 56px; border-bottom: 1px solid #262626; font-size: 12px; letter-spacing: 0.14em; color: #c6ff4f;">[ SOFTWARE PROJECTS ]</div>
+
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 32px 56px; border-bottom: 1px solid #1c1c1c;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">Jan 2026 &mdash; Present</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 11px;">
+      <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #c6ff4f;">Prediction Market Tracker</div>
+      <div style="font-size: 12px; color: #8a8a8a;">TypeScript, React, Node.js, Express, PostgreSQL, Prisma</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4;">
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Built a prediction market intelligence platform identifying high-conviction traders by tracking whale-sized trades across Polymarket and Kalshi.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Built a data ingestion pipeline processing 1,000+ market events/hour into PostgreSQL via Prisma ORM, powering analytics dashboards and trading charts.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Implemented a trader scoring engine evaluating 2,000+ wallets using win-rate and Brier score metrics, surfacing ranked forecasters via a React leaderboard.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 32px 56px; border-bottom: 1px solid #1c1c1c;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">Nov &mdash; Dec 2025</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 11px;">
+      <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #c6ff4f;">File Network Server</div>
+      <div style="font-size: 12px; color: #8a8a8a;">C++, Python, Multi-threading, Concurrency &mdash; University of Michigan</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4;">
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Collaborated on a team to design and implement a multi-client networked file system server in C++, supporting remote file operations over a custom client&ndash;server protocol.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Built a multi-threaded, thread-safe server architecture using mutexes and RAII-style lock guards, enforcing atomic file and directory operations under concurrent access.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Developed a robust request/response handling layer with validation and error handling, and stress-tested the system for reliability under high contention.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 32px 56px; border-bottom: 1px solid #1c1c1c;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">Oct &mdash; Nov 2024</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 11px;">
+      <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #c6ff4f;">Distributed Search Engine</div>
+      <div style="font-size: 12px; color: #8a8a8a;">Python, Flask, MapReduce, SQLite, Information Retrieval &mdash; University of Michigan</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4;">
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Designed a distributed search engine indexing 10,000+ Wikipedia articles using a MapReduce pipeline to build a segmented inverted index with tf-idf weighting.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Built a Flask REST index server loading index segments, PageRank data, and stopwords into memory to serve ranked results using cosine similarity and weighted PageRank scoring.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Implemented a search aggregator performing concurrent API requests across index servers, merging ranked results, backed by SQLite metadata storage.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 32px 56px; border-bottom: 1px solid #262626;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">Sep &mdash; Oct 2024</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 11px;">
+      <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #c6ff4f;">Full-Stack Social Media Platform</div>
+      <div style="font-size: 12px; color: #8a8a8a;">React, Python, Flask, AWS EC2, REST API &mdash; University of Michigan</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4;">
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Built an Instagram-style platform with a React frontend and Flask REST API backend, supporting authenticated CRUD operations, pagination, and proper HTTP status handling.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Implemented infinite scroll, double-click-to-like interactions, and real-time feed updates via asynchronous Fetch API requests, backed by optimized SQL queries.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Deployed the application to AWS EC2, configuring the server environment and Webpack build pipeline.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME PROJECTS -->
+  <div style="padding: 22px 56px; border-bottom: 1px solid #262626; font-size: 12px; letter-spacing: 0.14em; color: #7dd3fc;">[ GAME DEVELOPMENT PROJECTS ]</div>
+
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 32px 56px; border-bottom: 1px solid #1c1c1c;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">2024 &mdash; Present</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 11px;">
+      <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #7dd3fc;">Deep Divide</div>
+      <div style="font-size: 12px; color: #8a8a8a;">Unity, C# &mdash; Two-Player Co-op Underwater Exploration</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4;">
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Contributed gameplay systems, UI/UX design, onboarding (tutorial, intro cinematic, contextual hints), diving feel (oxygen HUD, crosshair, underwater effects), and physics handling.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Presented at a university game expo; in continued development toward a full public release on itch.io and GameJolt.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 32px 56px; border-bottom: 1px solid #1c1c1c;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">2024</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 11px;">
+      <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #7dd3fc;">The Legend of Zelda NES (Unity Remaster)</div>
+      <div style="font-size: 12px; color: #8a8a8a;">Unity, C#</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4;">
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Developed and integrated core gameplay systems including combat, enemy AI, UI, and room interactions while implementing modular, reusable C# architecture.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Contributed to testing and debugging throughout development to ensure project stability.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 32px 56px;">
+    <div style="grid-column: span 3; font-size: 12px; color: #9e9e9e;">2024</div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column; gap: 11px;">
+      <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #7dd3fc;">Observed</div>
+      <div style="font-size: 12px; color: #8a8a8a;">Unity, C# &mdash; 2D Puzzle-Platformer</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.7; color: #b4b4b4;">
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Designed and implemented a vision-cone detection and freeze mechanic using a PubSub/EventBus architecture to keep gameplay systems modular and decoupled.</div></div>
+        <div style="display: flex; gap: 14px;"><div style="color: #7d7d7d; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 3px;">&mdash;</div><div style="text-wrap: pretty;">Developed player movement and aiming systems, reactive moving platforms, vision-blocking mechanics, audio feedback integration, and camera refinements.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
